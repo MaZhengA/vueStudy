@@ -10,8 +10,12 @@
 > 限制类型: props: { name: String } 
 > 限制类型、必填、默认值 props: { name: { type: String, required: true, default: '马铮' } }
 
-## 组件传值
+## todolist案例总结
+### 组件传值
 1. 父传子通过props,
 2. 子传父通过调用父组件传过来的的方法
+3. 使用v-model时：v-model不能是props传过来的值，因为props是不可修改的
 
-## todolist案例总结
+## 组件的自定义事件
+1. 一种组件的通信方式，子组件 -> 父组件
+2. 使用场景：在父组件中给子组件绑定事件，事件回调在父组件中

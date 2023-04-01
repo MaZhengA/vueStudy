@@ -14,11 +14,7 @@ export default {
   name: 'App',
   data() {
     return {
-      todos: [
-        {id: '001', title: '抽烟', done: true},
-        {id: '002', title: '喝酒', done: false},
-        {id: '003', title: '烫头', done: true}
-      ]
+      todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   components: {
@@ -46,7 +42,15 @@ export default {
     checkedAllTodo(checked) {
       this.todos.forEach(item => item.done = checked)
     }
-  }
+  },
+  watch: {
+    todos: {
+      deep: true,
+      handler(value) {
+        localStorage.setItem('todos', JSON.stringify(value))
+      }
+    }
+  },
 }
 </script>
 <style lang="less">

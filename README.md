@@ -47,3 +47,42 @@ this.$bus.$off()
 
 ## 消息订阅模式
 1. pubsub.js中的发布和订阅的事件名一定要相同
+
+## nextTick
+1. 在下次dom更新循环结束后执行回调
+2. 使用场景：在修改数据之后立即调用这个方法，获取更新后的dom
+
+## 动画
+1. 单元素组件的过渡
+- 使用transition组件封装
+- 通过 appear attribute 设置节点在初始渲染的过渡，appear就是首次的意思
+2. 列表过渡，使用transition-group
+
+## 代理
+1. devServer.proxy 可以是一个指向开发环境 API 服务器的字符串，缺点是1.不能配置多个代理，2.不能灵活的控制走不走代理
+```js
+module.exports = {
+  devServer: {
+    proxy: 'http://localhost:5000'
+  }
+}
+```
+2. 具体规则
+```js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        pathRewrite: {'^/api' : ''}, // 重写路径，把api转为''
+        ws: true, 支持websocket
+        changeOrigin: true // 用于控制请求头中host的值
+      },
+      '/foo': {
+        target: '<other_url>'
+      }
+    }
+  }
+}
+```
+## 修改vue.config.js后一定要重新启动

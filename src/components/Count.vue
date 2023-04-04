@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>{{ $store.state.sum }}</h3>
+    <h3>扩大10倍后的值{{ $store.getters.bigSum }}</h3>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>

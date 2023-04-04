@@ -24,6 +24,13 @@ const store = new Vuex.Store({
     jian (context, value) {
       context.commit('decrement', value)
     }
+  },
+  // getters用于将state的数据进行加工
+  // getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+  getters: {
+    bigSum(state) {
+      return state.sum * 10
+    }
   }
 })
 

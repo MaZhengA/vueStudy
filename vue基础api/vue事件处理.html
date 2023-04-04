@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h3>{{ name }}</h3>
+    <button v-on:click="showInfo(66, $event)">点我提示信息</button>
+    <!-- .self 修饰符当event.target是当前操作的元素时才触发 -->
+    <div :style="{backgroundColor: 'red'}" @click.self="showMsg">
+      <button @click="showMsg">点我提示信息</button>
+    </div>
+    <!-- .passive 事件的默认行为 (即滚动行为) 将会立即触发,不会等待事件回调完毕 -->
+    <div class="box">
+      <ul @scroll="onScroll">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+      </ul>
+    </div>
+
+    <input @keyup.meta="submit" />
+    <!-- 表示必须按下ctrl+y才能触发事件 -->
+    <input @keyup.ctrl.y="submit" />
+  </div>
+
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '马铮'
+      },
+      methods: {
+        showInfo(number, event) {
+          console.log(this === vm); // this是vue实例
+          console.log(number, event); // $event是可以访问原生事件
+        },
+        showMsg() {
+          alert('1111')
+        },
+        onScroll() {
+          console.log('2222')
+        },
+        submit() {
+          console.log(111)
+        }
+      }
+    })
+  </script>
+
+  <style>
+    * {
+      margin-top: 20px;
+    }
+    ul {
+      border: 1px solid red;
+      width: 100px;
+      height: 100px;
+      overflow-y: auto;
+    }
+    li {
+      margin-top: 20px;
+    }
+  </style>
+</body>
+</html>

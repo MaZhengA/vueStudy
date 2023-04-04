@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- <div :class="classArr2">马铮</div> -->
+    <!-- 内联样式 -->
+    <!-- <div :style="{color: 'red', fontSize: '20px'}">马铮</div> --> 
+    <div :style="styleArr">马铮</div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        box: 'box', // 普通类型
+        classArr: ['box', 'bac', 'font'], // 数组类型
+        classArr2: { // 对象类型
+          box: true,
+          bac: true,
+          font: true
+        },
+        styleObj: {
+          fontSize: '20px',
+          color: 'red'
+        },
+        styleObj1: {
+          fontWeight: 500
+        },
+        styleArr: [
+          {
+            fontSize: '20px',
+            color: 'red'
+          },
+          {
+            fontWeight: 500
+          },
+        ]
+      }
+    })
+  </script>
+  <style>
+    .box {
+      border: 1px solid black;
+      width: 300px;
+      height: 150px;
+    }
+    .bac {
+      background-color: red;
+    }
+    .font {
+      font-size: 40px;
+    }
+  </style>
+</body>
+</html>

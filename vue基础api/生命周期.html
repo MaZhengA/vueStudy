@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <!-- template不能用作根元素 -->
+  <div id="root">
+    <h2 :style="{opacity}">vue生命周期</h2>
+    <button @click="stop">点我清空定时器</button>
+  </div>
+  
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        opacity: 1,
+        name: 2 
+      },
+      mounted() {
+        console.log('执行===')
+        this.timer = setInterval(() => {
+          this.opacity -= 0.01;
+          if (this.opacity <= 0) {
+            this.opacity = 1;
+          }
+        },100)
+      },
+      // destroyed() {
+        // clearInterval(this.timer);
+      // },
+      methods: {
+        
+        stop() {
+          this.$destroy();
+        },
+
+      },
+      beforeDestroy() {
+        clearInterval(this.timer);
+      },
+    })
+
+    // setInterval(() => {
+    //   vm.opacity = vm.opacity - 0.8;
+    //   if (vm.opacity = 0) {
+    //     vm.opacity === 1;
+    //   }
+    // },16)
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <!-- v-cloak 这个指令保持在元素上直到关联实例结束编译，当vm挂载之后，再显示str -->
+  <!-- 和 CSS 规则如 [v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。 -->
+
+  <!-- 只渲染元素和组件一次, 用于优化性能 -->
+
+  <!-- 跳过这个元素和它的子元素的编译过程, 用来显示原始的Mustache标签 -->
+
+  <!-- 自定义指令 -->
+  <!-- 指令相关的this是window -->
+  <div id="root">
+    <h3><span v-once>当前的n值是{{n}}</span></h3>
+    <h3>放大10倍的n值是<span v-big="n"></span></h3>
+    <button @click="n++">点击放大</button>
+  </div>
+
+  <div id="root1">
+    <h3><span>当前的n值是{{n}}</span></h3>
+    <h3>放大10倍的n值是<span v-big="n"></span></h3>
+    <button @click="n++">点击放大</button>
+    <br />
+    <input v-fbind:value="n" />
+  </div>
+  <script>  
+    Vue.config.productionTip = false;
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        n: 1,
+      },
+      directives: {
+        big(el, binding) {
+          // 指令所绑定的元素
+          // binding指令绑定的值 是一个对象
+          // 调用时机：1. 指令与元素绑定时，2. 指令所在的模版被重新解析时
+          console.log(el, binding, binding.value * 10);
+          el.innerText = binding.value * 10;
+        }
+      }
+    })
+
+    var vm = new Vue({
+      el: '#root1',
+      data: {
+        n: 1,
+      },
+      directives: {
+        big(el, binding) {
+          // 指令所绑定的元素
+          // binding指令绑定的值 是一个对象
+          // 调用时机：1. 指令与元素绑定时，2. 指令所在的模版被重新解析时
+          console.log(el, binding, binding.value * 10);
+          el.innerText = binding.value * 10;
+        },
+        fbind: {
+          // bind 只调用一次，指令第一次绑定到元素时调用（即上边的第1种）
+          // inserted 被绑定元素插入父节点时调用（特殊情况使用）
+          // update 所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前+''+（即上边的第2种）
+          // 可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。
+          bind(el, binding) {
+            el.value = binding.value;
+          },
+          inserted(el) {
+            el.focus();
+          },
+          update(el, binding) {
+            el.value = binding.value;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

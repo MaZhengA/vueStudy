@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <p>姓名: {{ student.name }}</p>
+    <p>年龄: {{ student.age }}</p>
+    <button @click="addSex">点我增加性别</button>
+    <p>性别: {{ student.sex }}</p>
+  </div>
+  <script>  
+    Vue.config.productionTip = false;
+
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        student: {
+          name: '马铮',
+          age: 26
+        }
+       
+      },
+      methods: {
+        addSex() {
+          // 给对象添加响应式原型
+          Vue.set(this.student, 'sex', '男')
+        }
+      },
+      computed: {
+      }
+    })
+  </script>
+</body>
+</html>

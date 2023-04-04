@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    姓：<input v-model="firstName" /><br>
+    名：<input v-model="lastName" /><br>
+    <p>{{ fullName }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        firstName: '马',
+        lastName: '铮',
+        // fullName: ''
+      },
+      // computed: {
+      //   fullName: {
+      //     get() {
+      //       // get函数需要有返回值，这里返回了一个函数，并没有返回this.fullName实际的值
+      //       setTimeout(() => {
+      //         return this.firstName + '-' + this.lastName
+      //       },2000)
+            
+      //     },
+      //   }
+      // },
+      // watch: {
+        // firstName(val) {
+        //   setTimeout(() => {
+        //     this.fullName = val + '-' + this.lastName
+        //   },3000)
+        // },
+        // firstName: {
+        //   handler(val) {
+        //     setTimeout(() => {
+        //       this.fullName = val + '-' + this.lastName
+        //     },1000)
+        //   }
+        // }
+      // }
+    })
+  </script>
+</body>
+</html>

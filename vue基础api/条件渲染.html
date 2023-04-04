@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <input v-model="filterValue" />
+    <ul>
+      <li v-for="(p, index) in filPerson" :key="index">
+        {{ p.name }}
+      </li>
+      <!-- <button @click.once="add">添加一个赵六</button> -->
+    </ul>
+  </div>
+  <script>  
+    Vue.config.productionTip = false;
+    // watch实现过滤2
+    // var vm = new Vue({
+    //   el: '#root',
+    //   data: {
+    //     persons: [
+    //       { id:1, name: '张三' },
+    //       { id:2, name: '李四' },
+    //       { id:3, name: '王五' },
+    //     ],
+    //     filterValue: '',
+    //     filPersons: []
+    //   },
+    //   methods: {
+    //     add() {
+    //       return this.persons.unshift({id:4, name: '赵六'})
+    //     },
+    //     // filter(e) {
+    //     //   const value = e.target.value;
+    //     //   console.log(value, 'valiue===')
+    //     //   if (value) {
+    //     //     this.persons = this.persons.filter(item => item.name === value);
+    //     //   }
+    //     //   console.log(this.persons.filter(item => item.name === value), 'this.persons.filter(item => item.name === value);')
+    //     // }
+    //   },
+    //   watch: {
+    //     // 这样写直接修改了原数据；有问题
+    //     // filterValue(val) {
+    //       // this.persons = this.persons.filter(item => (item.name).indexOf(val) !== -1);
+    //     // }
+    //     filterValue: {
+    //       immediate: true,
+    //       handler(val) {
+    //         this.filPersons = this.persons.filter(item => (item.name).indexOf(val) !== -1);
+    //       }
+    //     }
+    //   }
+    // })
+
+    // computed实现过滤
+    var vm = new Vue({
+      el: '#root',
+      data: {
+        persons: [
+          { id:1, name: '张三' },
+          { id:2, name: '李四' },
+          { id:3, name: '王五' },
+        ],
+        filterValue: ''
+      },
+      computed: {
+        filPerson() {
+          return this.persons.filter(item => (item.name).indexOf(this.filterValue) !== -1)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

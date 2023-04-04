@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="./vue.js"></script>
+</head>
+
+<body>
+	<div id="app" v-bind:class="dynamicId">
+		{{ a+ 10 }}
+		<span v-html="rawHtml">{{rawHtml}}</span>
+		<p>{{ a === 11 ? 'sss' : 'ssss' }}</p>
+		<p v-if="seen">你看见我了</p>
+		<a v-bind:href="url">...</a>
+		<div @click="click2">
+			<div @click.stop="click1">click1</div>
+		</div>
+		<p v-bind:class="{ active: actived }">绑定样式</p>
+
+		<ul id="v-for-arr">
+			<li v-for="item, key in items" v-bind:key="key">
+				{{ item.message }}
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="(name, value) in objects">
+				{{ name }} {{ value }}
+			</li>
+		</ul>
+
+		<button v-on:dblclick="greate(111, $event)">{{ count }}</button>
+
+		<input v-model="message" placeholder="edit me">
+		<p>Message is: {{ message }}</p>
+
+		<p style="white-space: pre-line;">{{ message2 }}</p>
+		<br>
+		<textarea v-model="message2" placeholder="add multiple lines"></textarea>
+		<br>
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+<br>
+<span>Checked names: {{ checkedNames }}</span>
+
+	</div>
+	<script>
+		var data = { 
+			count: 0,
+			a: 1,
+			rawHtml: "<span style='color: red'>13245321</span>", 
+			dynamicId: 'hhh',
+			seen: true,
+			url: 'www.baidu.com',
+			actived: true,
+			message: 132,
+			message2: 324,
+			checkedNames: [],
+			items: [
+				{ message: '1111' },{ message: '3333' },
+				{ message: '2222' },
+			],
+			objects: {
+				title: 111,
+				age: 56,
+				studeb: 3443
+			}
+		};
+
+		
+		var vm = new Vue({
+			el: "#app",
+			data: data,
+			methods: {
+				click1: function(e) {
+					console.log('click1')
+				},
+				click2: function() {
+					console.log('click2')
+				},
+				greate: function(param, event) {
+					if (event) {
+						event.preventDefault()
+					}
+					data.count++;
+					alert(param)
+				}
+			}
+		})
+
+		data.a = 2;
+	
+	</script>
+	<style>
+		.hhh {
+			color: blue;
+		}
+		.active {
+			font-size: 40px;
+		}
+	</style>
+</body>
+
+</html>

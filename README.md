@@ -127,3 +127,5 @@ https://api.uixsj.cn/hitokoto/get?type=social
 - 切换路由时，组件会被销毁，需要时再挂载
 - 每个组件都有$route信息，存储自己的路由信息
 - 整个应用只有一个router，通过组件的$router属性获取
+4. 嵌套路由：使用children配置项，跳转时(to)写完整路径
+5. query传递参数：一种是字符串写法，一种是对象写法

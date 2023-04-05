@@ -115,3 +115,6 @@ mutations: {
 ```
 3. 获取随机字符串接口
 https://api.uixsj.cn/hitokoto/get?type=social
+
+4. 模块化+命名空间
+- 目的：让代码更好维护，让多种数据分类更加明确

@@ -118,3 +118,12 @@ https://api.uixsj.cn/hitokoto/get?type=social
 
 4. 模块化+命名空间
 - 目的：让代码更好维护，让多种数据分类更加明确
+
+## vue-router
+1. <router-link to="/home" active-class="active">实现切换,active-class指定高亮样式
+2. <router-view>指定展示位置
+3. 注意点
+- 路由组件放在page文件夹中，一般组件放在component文件夹中
+- 切换路由时，组件会被销毁，需要时再挂载
+- 每个组件都有$route信息，存储自己的路由信息
+- 整个应用只有一个router，通过组件的$router属性获取

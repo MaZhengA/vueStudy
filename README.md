@@ -113,3 +113,5 @@ mutations: {
   }
 }
 ```
+3. 获取随机字符串接口
+https://api.uixsj.cn/hitokoto/get?type=social

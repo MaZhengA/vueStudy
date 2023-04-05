@@ -1,8 +1,12 @@
 <template>
-  <Count />
+  <div>
+    <Count />
+    <Person />
+  </div>
 </template>
 <script>
 import Count from './components/Count';
+import Person from './components/Person';
 export default {
   name: 'App',
   data() {
@@ -11,7 +15,8 @@ export default {
     }
   },
   components: {
-    Count
+    Count,
+    Person
   },
   mounted() {
     // console.log(this)

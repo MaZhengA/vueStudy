@@ -91,3 +91,25 @@ module.exports = {
 1. 作用：让父组件可以向子组件的指定位置插入html结构，父子组件通信: 父组件 -> 子组件
 2. 分类：默认插槽、具名插槽、作用域插槽
 3. 作用域插槽：数据在组件自身，但数据生成的html结构由组件的使用者决定
+
+## Vuex
+1. Action 通过 store.dispatch 方法触发：
+```js
+store.dispatch('increment')
+// 第一个context：与 store 实例具有相同方法和属性，第二个额外的参数
+actions: {
+  increment (context, value) {
+    context.commit('increment')
+  }
+}
+```
+2. Mutations 通过 store.commit 方法触发：
+```js
+store.commit('increment')
+// state是第一个参数，payload是额外的参数
+mutations: {
+  increment (state, payload) {
+    state.count += payload.amount
+  }
+}
+```

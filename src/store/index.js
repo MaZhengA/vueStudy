@@ -5,7 +5,13 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   // 存储数据
   state: {
-    sum: 0
+    sum: 0,
+    personList: [
+      {
+        id: '01', 
+        name: '张三'
+      }
+    ]
   },
   // 操作数据
   mutations: {
@@ -14,6 +20,9 @@ const store = new Vuex.Store({
     },
     decrement(state, value) {
       state.sum -= value
+    },
+    addPerson(state, value) {
+      state.personList.push(value);
     }
   },
   // 相应动作
@@ -23,7 +32,10 @@ const store = new Vuex.Store({
     },
     jian (context, value) {
       context.commit('decrement', value)
-    }
+    },
+    // addPerson(context, value) {
+    //   context.commit('add', value)
+    // }
   },
   // getters用于将state的数据进行加工
   // getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。

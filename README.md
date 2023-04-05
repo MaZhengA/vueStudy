@@ -130,3 +130,4 @@ https://api.uixsj.cn/hitokoto/get?type=social
 4. 嵌套路由：使用children配置项，跳转时(to)写完整路径
 5. query传递参数：一种是字符串写法，一种是对象写法
 6. params传递参数：配置路由时，声明占位符接受params，使用对象写法时，必须用name(命名路由)
+7. props传递参数：在route.js文件中写，有三种方式(对象、boolean、func)

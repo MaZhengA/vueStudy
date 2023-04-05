@@ -1,12 +1,12 @@
 <template>
   <div>
-    我是Home
+    我是第一个家
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
+  name: 'First'
 }
 </script>
 

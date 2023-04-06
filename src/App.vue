@@ -1,30 +1,20 @@
 <template>
   <div class="router-wrap">
-    <Banner />
-    <router-link to="/home" active-class="active" class="home">Home</router-link>
-    <router-link to="/about" active-class="active" class="home">About</router-link>
-    <router-view></router-view>
+    <el-row>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+    </el-row>
   </div>
 </template>
 <script>
-import Banner from './components/Banner.vue';
 export default {
   name: 'App',
-  components: {
-    Banner
-  }
 }
 </script>
 <style lang="less">
-.router-wrap {
-  .home {
-    margin-right: 20px;
-    text-decoration: none;
-  }
-  .active {
-    width: 50px;
-    height: 20px;
-    background: red;
-  }
-}
+
 </style>

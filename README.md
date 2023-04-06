@@ -131,3 +131,13 @@ https://api.uixsj.cn/hitokoto/get?type=social
 5. query传递参数：一种是字符串写法，一种是对象写法
 6. params传递参数：配置路由时，声明占位符接受params，使用对象写法时，必须用name(命名路由)
 7. props传递参数：在route.js文件中写，有三种方式(对象、boolean、func)
+9. 缓存路由组件keep-alive，让不展示的组件缓存，不被销毁
+```js
+// include - 字符串或正则表达式。只有名称匹配的组件会被缓存。
+// exclude - 字符串或正则表达式。任何名称匹配的组件都不会被缓存
+// max - 数字。最多可以缓存多少组件实例
+// <keep-alive> 不会在函数式组件中正常工作，因为它们没有缓存实例。
+<keep-alive include="First">
+  <router-view></router-view>
+</keep-alive>
+```

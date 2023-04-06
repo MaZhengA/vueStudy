@@ -36,9 +36,9 @@ export default {
       ]
     }
   },
-  beforeDestroy() {
-    console.log('组件被销毁了');
-  },
+  // beforeDestroy() {
+  //   console.log('组件被销毁了');
+  // },
   methods: {
     pushShow(item) {
       this.$router.push({ 

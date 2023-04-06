@@ -141,3 +141,6 @@ https://api.uixsj.cn/hitokoto/get?type=social
   <router-view></router-view>
 </keep-alive>
 ```
+10. 路由组件独有的生命周期钩子
+- activated 缓存组件激活时调用
+- deactivated 缓存组件失活时调用

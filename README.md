@@ -144,3 +144,11 @@ https://api.uixsj.cn/hitokoto/get?type=social
 10. 路由组件独有的生命周期钩子
 - activated 缓存组件激活时调用
 - deactivated 缓存组件失活时调用
+11. 路由器的两种工作模式
++ hash模式
+  - hash值不会包含在http请求中，即不会带给服务器
+  - 地址携带#号
+  - 地址可能被标记不合法
++ history模式
+  - 兼容性相对较差
+  - 部署需后端支持，解决404问题 

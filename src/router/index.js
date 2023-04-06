@@ -9,6 +9,7 @@ import Detail from '@/pages/Detail.vue';
 
 
 const router = new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/home',
